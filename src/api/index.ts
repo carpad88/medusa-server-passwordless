@@ -18,8 +18,8 @@ export default () => {
   app.use('/auth', route)
 
   route.post('/passwordless/sent', async (req, res) => {
-    // get user or create one if not exists
     const manager = req.scope.resolve('manager')
+    const eventBus = req.scope.resolve('eventBusService')
     const customerService = req.scope.resolve('customerService')
     const { email, isSignUp } = req.body
 
@@ -38,11 +38,14 @@ export default () => {
       })
     }
 
-    const passwordLessService = req.scope.resolve('passwordLessService')
     const url = `${req.protocol}://${req.get('host')}`
 
     try {
-      await passwordLessService.sendMagicLink(customer.email, isSignUp, url)
+      await eventBus.withTransaction(manager).emit('passwordless.login', {
+        email: customer.email,
+        isSignUp,
+        url
+      })
       return res.status(204).json({ message: 'Email sent' })
     } catch (error) {
       return res.status(404).json({ message: `There was an error sending the email.` })
@@ -60,7 +63,7 @@ export default () => {
     const passwordLessService = req.scope.resolve('passwordLessService')
     const loggedCustomer = passwordLessService.validateMagicLink(token)
 
-    if(!loggedCustomer) {
+    if (!loggedCustomer) {
       return res.status(403).json({ message: 'The user cannot be verified' })
     }
 
