@@ -1072,7 +1072,7 @@
     semver "^7.3.5"
     tar "^6.1.11"
 
-"@medusajs/medusa-cli@^1.3.3", "@medusajs/medusa-cli@^1.3.4":
+"@medusajs/medusa-cli@^1.3.3":
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/@medusajs/medusa-cli/-/medusa-cli-1.3.4.tgz#ab3c059f1b2fd8fa60a7cb144fa8846a3d7446a7"
   integrity sha512-2FBIDCU4bulOvlxCJdavvUPAyrPnmq5p3GwMIN5Yh1Q+ZDtoDCCqVCU/gO6/qjnqZukmHFeazi/uQ00qt1K81Q==
@@ -1106,15 +1106,49 @@
     winston "^3.3.3"
     yargs "^15.3.1"
 
-"@medusajs/medusa@^1.6.0":
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/@medusajs/medusa/-/medusa-1.6.3.tgz#9bc5bb581c2d5d36b6f207ac82e5d86f5575b614"
-  integrity sha512-sxGdY3crSHdDeY+FsUKvya5EP4aTeR9vP49/ML9G624TrP9Fo8+FXNGm8ASr5nJZd3iJNCE5TMa7NZhq7qy6Cw==
+"@medusajs/medusa-cli@^1.3.5":
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/@medusajs/medusa-cli/-/medusa-cli-1.3.5.tgz#4f8effab4ce26a4e02d757005d8577641fe09043"
+  integrity sha512-sAXWSiMYdZqzkjRmRUaCGPKDLmZ15tHZZqZQ1g8EdcuouFsGZaEVnx83vyo4q90AWOS4/SRrCXV6iDSwUCs8cA==
   dependencies:
-    "@medusajs/medusa-cli" "^1.3.4"
+    "@babel/polyfill" "^7.8.7"
+    "@babel/runtime" "^7.9.6"
+    axios "^0.21.1"
+    chalk "^4.0.0"
+    configstore "5.0.1"
+    core-js "^3.6.5"
+    dotenv "^8.2.0"
+    execa "^5.1.1"
+    fs-exists-cached "^1.0.0"
+    fs-extra "^10.0.0"
+    hosted-git-info "^4.0.2"
+    inquirer "^8.0.0"
+    is-valid-path "^0.1.1"
+    meant "^1.0.1"
+    medusa-core-utils "^1.1.31"
+    medusa-telemetry "0.0.15"
+    netrc-parser "^3.1.6"
+    open "^8.0.6"
+    ora "^5.4.1"
+    pg-god "^1.0.11"
+    prompts "^2.4.1"
+    regenerator-runtime "^0.13.5"
+    resolve-cwd "^3.0.0"
+    stack-trace "^0.0.10"
+    ulid "^2.3.0"
+    url "^0.11.0"
+    winston "^3.3.3"
+    yargs "^15.3.1"
+
+"@medusajs/medusa@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@medusajs/medusa/-/medusa-1.7.0.tgz#89d1485cb1ccc6aba1f15ef372b7e8a2fd64b577"
+  integrity sha512-QU0lPsH6+lxVA2VwB6jCQfv6zJre8UGFdkv5xIiMoyQZjRt5SNQJdgnxQltUsN3870clv9hW/gyKm3Q9sUU3nA==
+  dependencies:
+    "@medusajs/medusa-cli" "^1.3.5"
     "@types/ioredis" "^4.28.10"
     "@types/lodash" "^4.14.168"
-    awilix "^4.2.3"
+    awilix "^8.0.0"
     body-parser "^1.19.0"
     bull "^3.12.1"
     chokidar "^3.4.2"
@@ -1133,7 +1167,7 @@
     ioredis-mock "^5.6.0"
     iso8601-duration "^1.3.0"
     jsonwebtoken "^8.5.1"
-    medusa-core-utils "^1.1.34"
+    medusa-core-utils "^1.1.36"
     medusa-test-utils "^1.1.37"
     morgan "^1.9.1"
     multer "^1.4.2"
@@ -1541,13 +1575,13 @@ async@^3.2.3:
   resolved "https://registry.yarnpkg.com/async/-/async-3.2.4.tgz#2d22e00f8cddeb5fde5dd33522b56d1cf569a81c"
   integrity sha512-iAB+JbDEGXhyIUavoDl9WP/Jj106Kz9DEn1DPgYw5ruDn0e3Wgi3sKFm55sASdGBNOQB8F59d9qQ7deqrHA8wQ==
 
-awilix@^4.2.3:
-  version "4.3.4"
-  resolved "https://registry.yarnpkg.com/awilix/-/awilix-4.3.4.tgz#aeecc662efa96256981af3bc6243eb201c8b4a4f"
-  integrity sha512-NgRwUPxUnoK+OTRa2fXcRQVFPOPQXlwCN1FJPkhO3IHKQJHokhdVpDfgz9L3VZTcA1iSaOFE3N/Q/5P7lIDqig==
+awilix@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/awilix/-/awilix-8.0.0.tgz#556fa20e0f7b52b39479ed6b027ee054efd8f16a"
+  integrity sha512-9y4ejNj2nLu7ET8jtQPiI3Ibvu68iKcLbLy5pGsPy9HWWVyQhTT8YE+Ao7ZawTNXRWjosSy/r4QNmhaUt/ju0A==
   dependencies:
     camel-case "^4.1.2"
-    glob "^7.1.6"
+    fast-glob "^3.2.12"
 
 axios-retry@^3.1.9:
   version "3.3.1"
@@ -2561,7 +2595,7 @@ extract-stack@^2.0.0:
   resolved "https://registry.yarnpkg.com/extract-stack/-/extract-stack-2.0.0.tgz#11367bc865bfcd9bc0db3123e5edb57786f11f9b"
   integrity sha512-AEo4zm+TenK7zQorGK1f9mJ8L14hnTDi2ZQPR+Mub1NX8zimka1mXpV5LpH8x9HoUmFSHZCfLHqWvp0Y4FxxzQ==
 
-fast-glob@^3.2.9:
+fast-glob@^3.2.12, fast-glob@^3.2.9:
   version "3.2.12"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.12.tgz#7f39ec99c2e6ab030337142da9e0c18f37afae80"
   integrity sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==
@@ -3586,10 +3620,18 @@ media-typer@0.3.0:
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==
 
-medusa-core-utils@^1.1.31, medusa-core-utils@^1.1.32, medusa-core-utils@^1.1.34:
+medusa-core-utils@^1.1.31, medusa-core-utils@^1.1.32:
   version "1.1.34"
   resolved "https://registry.yarnpkg.com/medusa-core-utils/-/medusa-core-utils-1.1.34.tgz#b6b7228ba3612e559ed8a0a968c001f9c7a22e14"
   integrity sha512-Ys/vq3POqyjVgmjinEs6SA5kxhOkI14LSUAsVr5s4RXaZxQdcyV5ON1wM5fon0QW5kAiCdjWZ0e5pOjmpyXGWg==
+  dependencies:
+    joi "^17.3.0"
+    joi-objectid "^3.0.1"
+
+medusa-core-utils@^1.1.36:
+  version "1.1.36"
+  resolved "https://registry.yarnpkg.com/medusa-core-utils/-/medusa-core-utils-1.1.36.tgz#eea89003e1805f4ed2832c1587660e96cdd7c631"
+  integrity sha512-/F23G4eufZvAN4qqzH6WWipFK0czVQb45w6/2j/yTSJTXOPrYDy0SaTbeiHgE4jnMw9vJv8eDQ4Y7af2GvTjfA==
   dependencies:
     joi "^17.3.0"
     joi-objectid "^3.0.1"
@@ -3641,6 +3683,21 @@ medusa-telemetry@0.0.14:
   version "0.0.14"
   resolved "https://registry.yarnpkg.com/medusa-telemetry/-/medusa-telemetry-0.0.14.tgz#1247e3712ab1092c7318cae3d5d958f5c2873a20"
   integrity sha512-eG5VdU7uA1jQxP9p7SacPjWvYLBAVjHU39Pgvj2bWU8W6uBgCO2L+BGXcUZbr8DAdr9lK9w5IShltVQGjDsoWw==
+  dependencies:
+    axios "^0.21.1"
+    axios-retry "^3.1.9"
+    boxen "^5.0.1"
+    ci-info "^3.2.0"
+    configstore "5.0.1"
+    global "^4.4.0"
+    is-docker "^2.2.1"
+    remove-trailing-slash "^0.1.1"
+    uuid "^8.3.2"
+
+medusa-telemetry@0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/medusa-telemetry/-/medusa-telemetry-0.0.15.tgz#fe78ef1d51845806f669867eb90336bc51f8aba4"
+  integrity sha512-iQ/8a2lUVIVGXKj+by2Vc85eNWAwEAa5RxTQSQpgVOoMy0a/pw951EYQkYsch2cJAVW/tHmWqY0gYmqUuZ0c8A==
   dependencies:
     axios "^0.21.1"
     axios-retry "^3.1.9"
