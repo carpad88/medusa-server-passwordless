@@ -19,11 +19,10 @@ export default () => {
 
   route.post('/passwordless/sent', async (req, res) => {
     const manager = req.scope.resolve('manager')
-    const eventBus = req.scope.resolve('eventBusService')
     const customerService = req.scope.resolve('customerService')
     const { email, isSignUp } = req.body
 
-    let customer = await customerService.retrieveByEmail(email).catch(() => null)
+    let customer = await customerService.retrieveRegisteredByEmail(email).catch(() => null)
 
     if (!customer && !isSignUp) {
       res.status(404).json({ message: `Customer with ${email} was not found. Please sign up instead.` })
@@ -32,20 +31,16 @@ export default () => {
     if (!customer && isSignUp) {
       customer = await customerService.withTransaction(manager).create({
         email,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        first_name: '--',
+        last_name: '--',
         has_account: true
       })
     }
 
-    const url = `${req.protocol}://${req.get('host')}`
+    const passwordLessService = req.scope.resolve('passwordLessService')
 
     try {
-      await eventBus.withTransaction(manager).emit('passwordless.login', {
-        email: customer.email,
-        isSignUp,
-        url
-      })
+      await passwordLessService.sendMagicLink(customer.email, isSignUp)
       return res.status(204).json({ message: 'Email sent' })
     } catch (error) {
       return res.status(404).json({ message: `There was an error sending the email.` })
@@ -61,19 +56,20 @@ export default () => {
     }
 
     const passwordLessService = req.scope.resolve('passwordLessService')
-    const loggedCustomer = passwordLessService.validateMagicLink(token)
 
-    if (!loggedCustomer) {
+    try {
+      const loggedCustomer = await passwordLessService.validateMagicLink(token)
+
+      req.session.jwt_store = jwt.sign(
+        { customer_id: loggedCustomer.id },
+        projectConfig.jwt_secret!,
+        { expiresIn: '30d' }
+      )
+
+      return res.status(200).json({ ...loggedCustomer })
+    } catch (error) {
       return res.status(403).json({ message: 'The user cannot be verified' })
     }
-
-    req.session.jwt = jwt.sign(
-      { customer_id: loggedCustomer.id },
-      projectConfig.jwt_secret!,
-      { expiresIn: '30d' }
-    )
-
-    return res.redirect(`${projectConfig.store_cors}/account`)
   })
 
   return app
